@@ -14,5 +14,6 @@ DESCRIBE dept_emp;
 DESCRIBE dept_manager;
 
 DESCRIBE departments; DESCRIBE employees;
+DESCRIBE dept_emp;
 
 SHOW CREATE TABLE dept_manager;
