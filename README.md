@@ -1,1 +1,1 @@
-# database-exercises
+# This Repository contains SQL exercises.
