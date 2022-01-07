@@ -11,8 +11,7 @@ SELECT COUNT(DISTINCT artist)
 FROM albums;
 
 -- What is the primary key for the albums table?
-SELECT id
-FROM albums;
+DESCRIBE albums;
 
 -- What is the oldest release date for any album in the albums table? What is the most recent release date?
 SELECT MIN(release_date)
@@ -38,7 +37,7 @@ Where name = "Nevermind";
 -- Which albums were released in the 1990s?
 SELECT *
 FROM albums
-WHERE release_date BETWEEN '1990' and '1999';
+WHERE release_date BETWEEN '1990' AND '1999';
 
 -- Which albums had less than 20 million certified sales?
 SELECT * 
