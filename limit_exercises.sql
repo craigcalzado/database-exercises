@@ -4,7 +4,7 @@ USE employees;
 SHOW TABLES;
 
 -- 2. List the first 10 distinct last name sorted in descending order.
-SELECT DISTINCT *
+SELECT DISTINCT last_name
 FROM employees
 ORDER BY last_name DESC
 LIMIT 10;
