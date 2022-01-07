@@ -20,7 +20,7 @@ FROM albums;
 SELECT MAX(release_date)
 FROM albums;
 
--- What is the oldest release date for any album in the albums table? What is the most recent release date?
+-- The name of all albums by Pink Floyd?
 SELECT *
 FROM albums
 WHERE artist = 'Pink Floyd'; 
