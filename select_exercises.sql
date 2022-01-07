@@ -48,4 +48,4 @@ WHERE sales < '20.0';
 -- All the albums with a genre of "Rock".
 SELECT *
 FROM albums 
-WHERE genre = 'Rock';
+WHERE genre LIKE '%Rock%';
