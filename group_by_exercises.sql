@@ -33,7 +33,7 @@ AND last_name NOT LIKE '%qu%'
 GROUP BY last_name;
 
 -- Add a COUNT() to your results (the query above) to find the number of employees with the same last name.
-SELECT last_name, COUNT(last_name) AS 'no_of_employees'
+SELECT last_name, COUNT(*) AS 'no_of_employees'
 FROM employees
 WHERE last_name LIKE '%q%'
 AND last_name NOT LIKE '%qu%'
@@ -44,16 +44,22 @@ SELECT COUNT(*) AS 'Irena_Vidya_Maya', gender
 FROM employees
 WHERE first_name IN ('Irena', 'Vidya', 'Maya')
 GROUP BY gender;
+-- OR
+SELECT first_name, gender, COUNT(*)
+FROM employees
+WHERE first_name IN ('Irena', 'Vidya', 'Maya')
+GROUP BY first_name, gender;
 
 -- Using your query that generates a username for all of the employees, generate a count employees for each unique username. Are there any duplicate usernames?
 SELECT LOWER(CONCAT(SUBSTR(first_name,1,1), 
 					SUBSTR(last_name,1,4),
 					'_',
 					SUBSTR(birth_date,6,2),
-					SUBSTR(birth_date,3,2))) AS username, COUNT(*) AS num_of_dupl
+					SUBSTR(birth_date,3,2)))
+AS username, COUNT(*) AS num_shared
 FROM employees
 GROUP BY username
-HAVING num_of_dupl = 1;
+HAVING num_shared = 1;
 
 -- BONUS: How many duplicate usernames are there?
 SELECT LOWER(CONCAT(SUBSTR(first_name,1,1), 
@@ -76,8 +82,9 @@ GROUP BY emp_no;
 -- Using the dept_emp table, count how many current employees work in each department. The query result should show 9 rows, one for each department and the employee count.
 DESCRIBE dept_emp;
 
-SELECT dept_no, COUNT(dept_no) AS emp_n_dept
+SELECT dept_no, COUNT(*) AS emp_n_dept
 FROM dept_emp
+WHERE to_date > NOW() -- added for 'current'
 GROUP BY dept_no;
 
 -- Determine how many different salaries each employee has had. This includes both historic and current.
