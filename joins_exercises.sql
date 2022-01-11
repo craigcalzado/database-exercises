@@ -193,7 +193,35 @@ FROM `departments` AS d
 		ON de.`emp_no` = s.`emp_no`
 GROUP BY Department;
 
--- Bonus Find the names of all current employees, their department name, and their current manager's name.
+-- Bonus: Find the names of all current employees, their department name, and their current manager's name.
 
+SELECT CONCAT(e.`first_name`, ' ', e.`last_name`) AS Employee_Name,
+		d.`dept_name` AS Department_Name,
+		CONCAT(m.`first_name`, ' ', m.`last_name`) AS Manager_Name
+FROM `employees` AS m
+	JOIN `dept_manager` AS dm
+		ON m.`emp_no` = dm.`emp_no`
+	JOIN `departments`AS d 
+		ON dm.`dept_no` = d.`dept_no`
+	JOIN `dept_emp` AS de
+		ON d.`dept_no` = de.`dept_no`
+	JOIN `employees` AS e
+		ON de.`emp_no` = e.`emp_no`
+WHERE de.`to_date` > NOW()
+	AND dm.`to_date` > NOW();
 
+-- Bonus: Who is the highest paid employee within each department.
 	
+SELECT CONCAT(e.`first_name`, ' ', e.`last_name`) AS Employee_Name,
+		d.`dept_name` AS Department_Name,
+		s.`salary`AS Salary
+FROM `employees` AS e
+	JOIN `salaries` AS s
+		ON e.`emp_no` = s.`emp_no`
+	JOIN `dept_emp` AS de
+		ON s.`emp_no` = de.`emp_no`
+	JOIN `departments` AS d
+		ON de.`dept_no` = d.`dept_no`
+WHERE s.`to_date` > NOW();
+
+        
