@@ -158,8 +158,7 @@ FROM `employees` AS e
 		ON s.`emp_no` = de.`emp_no`
 WHERE de.`dept_no` = 'd001'
 GROUP BY Employees
-ORDER BY Salary DESC
-LIMIT 1;
+ORDER BY Salary DESC;
 
 -- Which current department manager has the highest salary?
 DESCRIBE `dept_manager`;
@@ -212,16 +211,32 @@ WHERE de.`to_date` > NOW()
 
 -- Bonus: Who is the highest paid employee within each department.
 	
-SELECT CONCAT(e.`first_name`, ' ', e.`last_name`) AS Employee_Name,
-		d.`dept_name` AS Department_Name,
-		s.`salary`AS Salary
-FROM `employees` AS e
-	JOIN `salaries` AS s
-		ON e.`emp_no` = s.`emp_no`
-	JOIN `dept_emp` AS de
-		ON s.`emp_no` = de.`emp_no`
-	JOIN `departments` AS d
-		ON de.`dept_no` = d.`dept_no`
-WHERE s.`to_date` > NOW();
+SELECT CONCAT(e.first_name, ' ', e.last_name) AS Employee_Name,
+		d.dept_name AS Department_Name,
+		s.salary AS Salary
+FROM employees AS e
+	JOIN salaries AS s
+		ON e.emp_no = s.emp_no
+	JOIN dept_emp AS de
+		ON s.emp_no = de.emp_no
+	JOIN departments AS d
+		ON de.dept_no = d.dept_no
+WHERE s.to_date > NOW()
+AND (d.dept_name, s.salary)
+IN 
+(
+SELECT d.dept_name, 
+		MAX(s.salary)
+FROM employees AS e
+	JOIN salaries AS s
+		ON e.emp_no = s.emp_no
+	JOIN dept_emp AS de
+		ON s.emp_no = de.emp_no
+	JOIN departments AS d
+		ON de.dept_no = d.dept_no
+WHERE s.to_date > NOW()
+GROUP BY d.dept_name
+);
+
 
         
