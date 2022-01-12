@@ -155,3 +155,6 @@ GROUP BY e.emp_no;
 
 SELECT STDDEV(salary)
 FROM salaries;
+
+SELECT MAX(salary)
+FROM salaries;
