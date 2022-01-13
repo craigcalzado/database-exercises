@@ -37,7 +37,7 @@ WHERE column_a
 IN (
     SELECT column_a
     FROM table_b
-    WHERE column_b = true
+    WHERE column_b = TRUE
 	);
 -- example of single column return sub query
 SELECT first_name, last_name, birth_date
@@ -66,7 +66,7 @@ FROM
    (
     SELECT * 
     FROM employees
-    WHERE first_name like 'Geor%'
+    WHERE first_name LIKE 'Geor%'
     	) AS g;
 -- OR
 SELECT g.first_name, g.last_name, salaries.salary
@@ -74,7 +74,7 @@ FROM
     (
      SELECT * 
      FROM employees
-     WHERE first_name like 'Geor%'
+     WHERE first_name LIKE 'Geor%'
      ) AS g
 	JOIN salaries 
 		ON g.emp_no = salaries.emp_no
@@ -152,9 +152,50 @@ GROUP BY e.emp_no;
 
 -- How many current salaries are within 1 standard deviation of the current highest salary? (Hint: you can use a built in function to calculate the standard deviation.) What percentage of all salaries is this?
 
+-- 83
+SELECT COUNT(*) AS One_STD_Max
+FROM salaries 
+WHERE to_date > NOW() 
+AND salary >= 
+(
+SELECT (MAX(salary) - STDDEV(salary))
+FROM salaries
+WHERE to_date > NOW()
+);
+--.0346
+SELECT COUNT(*) /
+	(
+	SELECT COUNT(*)
+	FROM salaries 
+	WHERE to_date > NOW()
+	) * 100
+FROM salaries 
+WHERE to_date > NOW() 
+AND salary >= 
+	(
+	SELECT (MAX(salary) - STDDEV(salary))
+	FROM salaries
+	WHERE to_date > NOW()
+	);
+	
+-- Find all the department names that currently have female managers.
+SELECT DISTINCT d.dept_name
+FROM dept_manager AS dm
+ JOIN departments AS d
+   ON dm.dept_no = d.dept_no
+WHERE dm.emp_no IN
+	(
+	SELECT emp_no
+	FROM employees
+	WHERE gender = 'F'
+	)
+AND dm.to_date > NOW();
 
-SELECT STDDEV(salary)
-FROM salaries;
-
-SELECT MAX(salary)
-FROM salaries;
+-- Find the first and last name of the employee with the highest salary.
+SELECT first_name, last_name
+FROM employees
+WHERE emp_no =
+	(
+	SELECT MAX(salary)
+	FROM salaries
+	);
