@@ -192,10 +192,13 @@ WHERE dm.emp_no IN
 AND dm.to_date > NOW();
 
 -- Find the first and last name of the employee with the highest salary.
-SELECT first_name, last_name
-FROM employees
-WHERE emp_no =
+SELECT e.first_name, e.last_name, s.salary
+FROM employees AS e
+	JOIN salaries AS s
+	 ON e.emp_no = s.emp_no
+WHERE s.salary =
 	(
 	SELECT MAX(salary)
 	FROM salaries
+	WHERE to_date > NOW()
 	);
