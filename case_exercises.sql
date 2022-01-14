@@ -44,17 +44,17 @@ FROM employees;
 
 SELECT
 	CASE 
-           WHEN dept_name IN ('research', 'development') THEN 'R&D'
-           WHEN dept_name IN ('sales', 'marketing') THEN 'Sales & Marketing' 
-           WHEN dept_name IN ('Production', 'Quality Management') THEN 'Prod & QM'
-           WHEN dept_name IN ('Finance', 'Human Resources') THEN 'Finance & HR'
-           ELSE dept_name
+           WHEN d.dept_name IN ('research', 'development') THEN 'R&D'
+           WHEN d.dept_name IN ('sales', 'marketing') THEN 'Sales & Marketing' 
+           WHEN d.dept_name IN ('Production', 'Quality Management') THEN 'Prod & QM'
+           WHEN d.dept_name IN ('Finance', 'Human Resources') THEN 'Finance & HR'
+           ELSE d.dept_name
            END AS Dept_Group,
            AVG(s.salary) AVG_Salary
 FROM salaries s
 	JOIN dept_emp de
-	USING (emp_no)
+		USING (emp_no)
 	JOIN departments d
-	USING (dept_no)
+		USING (dept_no)
 WHERE de.to_date > NOW() AND s.to_date > NOW()
 GROUP BY dept_group;
