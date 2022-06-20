@@ -114,3 +114,19 @@ SELECT *
 FROM country
 WHERE population > 500000000;
 -- Answer china and india both have over 500000000 people
+
+-- select all cities in egypt
+SELECT *
+FROM city
+WHERE countrycode = 'EGY';
+-- what is the five highest population cities in egypt
+SELECT *
+FROM city
+WHERE countrycode = 'EGY'
+ORDER BY population DESC
+LIMIT 5;
+-- Answer: Kairo, Aleksandria, Giza, al-Qahirah, Port Said
+-- What is the total population of Kairo, Aleksandria, Giza, al-Qahirah, Port Said
+SELECT SUM(population)
+FROM city
+WHERE countrycode = 'EGY';
