@@ -101,3 +101,16 @@ FROM employees
 WHERE last_name 
 LIKE '%q%' 
 AND NOT last_name LIKE '%qu%';
+
+-- Extra Practice 
+use world;
+show TABLES;
+
+DESCRIBE city;
+DESCRIBE country;
+
+-- find all countries where the population is greater than 500,000,000
+SELECT *
+FROM country
+WHERE population > 500000000;
+-- Answer china and india both have over 500000000 people
