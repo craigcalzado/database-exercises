@@ -49,6 +49,10 @@ WHERE last_name LIKE '%q%'
 AND last_name NOT LIKE '%qu%'
 GROUP BY last_name;
 
+SELECT concat(first_name, " ", last_name) AS full_name
+from employees
+where first_name like 'm%o';
+
 -- Find all all employees with first names 'Irena', 'Vidya', or 'Maya'. Use COUNT(*) and GROUP BY to find the number of employees for each gender with those names.
 SELECT COUNT(*) AS 'Irena_Vidya_Maya', gender
 FROM employees
@@ -130,3 +134,14 @@ SELECT emp_no, AVG(salary) AS avg_salary
 FROM salaries
 GROUP BY emp_no
 HAVING avg_salary BETWEEN 80000 AND 90000;
+
+-- Setup for new DATABASE
+SHOW DATABASES;
+USE mall_customers;
+SHOW TABLES;
+
+DESCRIBE customers;
+
+--How many customers are in the mall table?
+SELECT count(distinct customer_id)
+FROM customers;
