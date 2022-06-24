@@ -18,6 +18,16 @@ FROM employees
 WHERE last_name LIKE 'e%e'
 GROUP BY last_name, first_name;
 
+select last_name, first_name
+from employees
+where first_name like 'm%'
+group by last_name, first_name;
+
+select last_name, first_name
+from employees
+where first_name like 'm%o'
+GROUP by first_name, last_name;
+
 -- Write a query to to find all unique combinations of first and last names of all employees whose last names start and end with 'E'.
 SELECT concat(first_name, " ", last_name) AS full_name
 FROM employees
