@@ -1,9 +1,14 @@
+-- This exercise is designed to become familiar with databases
+-- To begin after you signed in to your desired database you use SHOW DATABASES to see what data bases you have access too.
 SHOW DATABASES;
 
+-- Once you identified the database you utilize the USE command to call that data base.
 USE employees;
 
-SHOW TABLES; 
+--Within the database you can view which tables are there to explore with the SHOW Tables function.
+show TABLES; 
 
+--
 DESCRIBE employees; 
 
 DESCRIBE salaries;
