@@ -34,40 +34,52 @@ FROM application_history;
 -- What is the primary key for the albums table?
 USE albums_db;
 
+-- DESCRIBE is a function used to identify the fields, types, and keys of a table.
 DESCRIBE albums;
+-- THe PRIMARY KEY is the id field.
+
 
 -- What is the oldest release date for any album in the albums table? What is the most recent release date?
+-- Select Min(desired field) allows us to find the lowest value within that field.
 SELECT MIN(release_date)
 FROM albums;
+-- The min release date is 1967.
 SELECT MAX(release_date)
 FROM albums;
+-- The max release date is 2011.
 
 -- The name of all albums by Pink Floyd?
 SELECT *
 FROM albums
-WHERE artist = 'Pink Floyd'; 
+WHERE artist = 'Pink Floyd';
+-- The query above is selecting all from the albums table where the artist is pink floyd.
 
 -- The year Sgt. Pepper's Lonely Hearts Club Band was released?
 SELECT release_date
 FROM albums
 Where name = "Sgt. Pepper's Lonely Hearts Club Band";
+-- The query above is selecting the release date from the albums table where the name is "Sgt. Pepper's Lonely Hearts Club Band".
 
 -- The genre for the album Nevermind?
 SELECT genre
 FROM albums
 Where name = "Nevermind";
+-- The query above is selecting the genre from the albums table where the name is "Nevermind".
 
 -- Which albums were released in the 1990s?
 SELECT *
 FROM albums
 WHERE release_date BETWEEN '1990' AND '1999';
+-- The query above is selecting all from the albums table where the release date is between 1990 and 1999.
 
 -- Which albums had less than 20 million certified sales?
 SELECT * 
 FROM albums
 WHERE sales < '20.0';
+-- The query above is selecting all from the albums table where the sales is less than 20.
 
 -- All the albums with a genre of "Rock".
 SELECT *
 FROM albums 
 WHERE genre LIKE '%Rock%';
+-- The query above is selecting all from the albums table where the genre is like rock.
