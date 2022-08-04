@@ -3,11 +3,12 @@ SHOW DATABASES;
 
 -- USE; selects the database you want to use.
 USE albums_db;
-USE home_credit;
 
 -- How many rows are in the albums table?
 SELECT MAX(id)
 FROM albums;
+-- Answer: The max(id) is the highest id in the albums table. Which is 31.
+
 -- How many rows are in the home_credit database?
 SELECT COUNT(*);
 -- This SQL query shows the number of tables within the database.
@@ -17,14 +18,22 @@ SHOW TABLES;
 -- The SQL query above is useing home_credit database and howing all the tables within the database
 
 -- How many unique artist names are in the albums table?
+Use albums_db;
+
 SELECT COUNT(DISTINCT artist)
 FROM albums;
+-- Answer: The count(distinct artist) is the number of unique artist names in the albums table. Which is 23.
+
 -- How man unique rows are there in application_history
+USE home_credit;
+
 SELECT *
 FROM application_history;
-
+-- The '*' refrences all so this query would be read as select all from application history.
 
 -- What is the primary key for the albums table?
+USE albums_db;
+
 DESCRIBE albums;
 
 -- What is the oldest release date for any album in the albums table? What is the most recent release date?
