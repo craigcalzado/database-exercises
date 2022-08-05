@@ -70,7 +70,6 @@ SELECT *
 FROM employees 
 WHERE last_name 
 LIKE '%E';
--- 
 
 -- 8. Find all current or previous employees hired in the 90s. Enter a comment with the number of employees returned.
 -- 135214 employees were hired in the 90s
@@ -108,7 +107,7 @@ WHERE last_name
 LIKE '%q%' 
 AND NOT last_name LIKE '%qu%';
 
--- Extra Practice 
+-- Extra Practice  using the world database
 use world;
 show TABLES;
 
