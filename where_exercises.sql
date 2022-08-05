@@ -3,6 +3,7 @@
 SHOW DATABASES;
 USE employees;
 SHOW TABLES;
+-- The querys above show the databases and tables in the employees database.
 
 -- 2. Find all current or previous employees with first names 'Irena', 'Vidya', or 'Maya' using IN. Enter a comment with the number of records returned.
 -- 709
@@ -12,6 +13,7 @@ SELECT COUNT(*)
 FROM employees 
 WHERE first_name
 IN ('Irena', 'Vidya', 'Maya');
+-- The query above uses IN to find all current or previous employees with first names 'Irena', 'Vidya', or 'Maya'.
 
 -- 3. Find all current or previous employees with first names 'Irena', 'Vidya', or 'Maya', as in Q2, but use OR instead of IN. Enter a comment with the number of records returned. Does it match number of rows from Q2?
 -- Yes, 709
@@ -20,6 +22,7 @@ FROM employees
 WHERE first_name = 'Irena'
 OR first_name = 'Vidya' 
 OR first_name = 'Maya';
+-- The query above uses OR to find all current or previous employees with first names 'Irena', 'Vidya', or 'Maya'.
 
 -- 4. Find all current or previous employees with first names 'Irena', 'Vidya', or 'Maya', using OR, and who is male. Enter a comment with the number of records returned.
 -- 441
@@ -29,6 +32,7 @@ WHERE gender = 'M'
 AND (first_name = 'Irena'
 OR first_name = 'Vidya' 
 OR first_name = 'Maya');
+-- This query is simular to the one above except it only looks for males.
 
 -- 5. Find all current or previous employees whose last name starts with 'E'. Enter a comment with the number of employees whose last name starts with E.
 -- 7330
@@ -51,6 +55,7 @@ FROM employees
 WHERE last_name 
 LIKE '%E'
 AND NOT last_name LIKE 'E%';
+-- The query above finds all current or previous employees whose last name starts or ends with 'E'.
 
 -- 7. Find all current or previous employees employees whose last name starts and ends with 'E'. Enter a comment with the number of employees whose last name starts and ends with E. How many employees' last names end with E, regardless of whether they start with E?
 -- 899 employees start and end with E.
@@ -65,6 +70,7 @@ SELECT *
 FROM employees 
 WHERE last_name 
 LIKE '%E';
+-- 
 
 -- 8. Find all current or previous employees hired in the 90s. Enter a comment with the number of employees returned.
 -- 135214 employees were hired in the 90s
