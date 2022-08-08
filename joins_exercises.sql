@@ -4,19 +4,24 @@ USE join_example_db;
 
 
 -- NOTES
+DESCRIBE users;
 SELECT *
 FROM users;
+-- The query above selects all from the users in the join_example_db.
 
 SELECT *
 FROM roles;
+-- The query above selects all from the roles in the join_example_db.
 
 SELECT users.name as user_name, roles.name as role_name
 FROM users
 JOIN roles ON users.role_id = roles.id;
+-- The query above selects the user name and the role name from the users and roles tables. Then joins the tables on the user's role id and the role's id.
 
 SELECT users.name AS user_name, roles.name AS role_name
 FROM users
 LEFT JOIN roles ON users.role_id = roles.id;
+-- The query above selects the user name and the role name from the users and roles tables. Then joins the tables on the user's role id and the role's id. Then left joins the tables.
 
 -- EXERCISES:
 -- Use the join_example_db. Select all the records from both the 
@@ -35,18 +40,22 @@ users.name AS user_name,
 users.email AS user_email
 FROM roles 
 JOIN users ON roles.id = users.id;
+-- The query above is a join. The expected number of results is 3.
 
 SELECT * 
 FROM users 
 JOIN roles ON users.role_id = roles.id;
+-- The query above is a join. The expected number of results is 3.
 
 SELECT *
 FROM users
 LEFT JOIN roles ON users.role_id = roles.id;
+-- The query above is a left join. The expected number of results is 4.
 
 SELECT *
 FROM users
 RIGHT JOIN roles ON users.role_id = roles.id;
+-- The query above is a right join. The expected number of results is 3.
 
 -- Although not explicitly covered in the lesson, aggregate functions like count can be used with join queries. Use count and the appropriate join type to get a list of roles along with the number of users that has the role. Hint: You will also need to use group by in the query.
 
@@ -54,6 +63,7 @@ SELECT roles.name, COUNT(*) AS number_of_users
 FROM roles
 JOIN users ON users.role_id = roles.id
 GROUP BY roles.name;
+-- The query above is a join. Then grouped the results by the role name. Then counted the number of users that has the role.
 
 -- Use the employees database.
 
@@ -70,6 +80,7 @@ JOIN dept_manager AS de
  JOIN employees AS e
  ON de.`emp_no` = e.`emp_no`
   WHERE de.`to_date`> NOW();
+  -- The query above selects the department name and the manager's name. Then joins the departments table with the dept_manager table on the department number. Then joins the dept_manager table with the employees table on the employee number. Then selects the current manager.
   
   -- Find the name of all departments currently managed by women.
   
@@ -83,6 +94,7 @@ JOIN employees AS e
   ON e.emp_no = de.emp_no
 WHERE de.`to_date`> NOW()
 AND e.gender = 'F';
+-- The query abose select the department name and changes it to Department. Concats the first and last name and chages the field to Manager ans selects the gender field and remanes it Sex. Then joins the tables on the employee id. Then only looks at the department managers data until now and where the gender is F.
 
 -- Find the current titles of employees currently working in the Customer Service department.
 	
@@ -100,6 +112,7 @@ SELECT t.title AS Title,
     AND d.dept_name = 'Customer Service'
  GROUP BY Title
  ORDER By Count;
+ 
 
 
 -- Find the current salary of all current managers.
