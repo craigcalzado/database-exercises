@@ -2,11 +2,13 @@
 SHOW DATABASES;
 USE employees;
 SHOW TABLES;
+-- The queries above is the basic setup.
 
 -- Scalar Sub-queries (Return a single value)
-SELECT AVG(salary) --
-	FROM salaries --
-	WHERE to_date > CURDATE(); --
+SELECT AVG(salary)
+	FROM salaries 
+	WHERE to_date > CURDATE();
+-- The above query returns a single value, the average salary of all employees.
 
 SELECT emp_no, salary
 FROM salaries
@@ -17,6 +19,7 @@ WHERE salary >
 	WHERE to_date > CURDATE() --
 	)
 AND to_date > CURDATE();
+-- The above query returns the employee number and salary of all employees who earn more than the average salary.
 
 -- Arithmetic sub-query
 SELECT emp_no, salary
@@ -28,6 +31,7 @@ WHERE salary > 2 *
 	WHERE to_date > CURDATE() --
 	)
 AND to_date > CURDATE();
+-- The above query returns the employee number and salary of all employees who earn more than twice the average salary.
 
 -- Column Sub-queries (Return a Single Column)
 -- Follows this syntax
@@ -39,6 +43,8 @@ IN (
     FROM table_b
     WHERE column_b = TRUE
 	);
+-- The above query returns the column_a, column_b, and column_c from table_a where column_a is in the column_a from table_b where column_b is true.
+
 -- example of single column return sub query
 SELECT first_name, last_name, birth_date
 FROM employees
@@ -46,8 +52,8 @@ WHERE emp_no
 IN (
     SELECT emp_no
     FROM dept_manager
-	)
-LIMIT 10;
+	);
+-- The above query returns the first_name, last_name, and birth_date from employees where emp_no is in the emp_no from dept_manager.
 
 -- example row sub-queries(return single row)
 SELECT first_name, last_name, birth_date
@@ -58,6 +64,7 @@ WHERE emp_no =
     FROM employees
     WHERE emp_no = 101010
     	);
+-- The above query returns the first_name, last_name, and birth_date from employees where emp_no is equal to the emp_no from employees where emp_no is equal to 101010.
 
 -- Example of Table Subqueries Return an Entire Table
 
@@ -68,6 +75,7 @@ FROM
     FROM employees
     WHERE first_name LIKE 'Geor%'
     	) AS g;
+-- The above query returns the birth_date, emp_no, and first_name from employees where first_name is like 'Geor%'.
 -- OR
 SELECT g.first_name, g.last_name, salaries.salary
 FROM
@@ -79,6 +87,7 @@ FROM
 	JOIN salaries 
 		ON g.emp_no = salaries.emp_no
 WHERE to_date > CURDATE();
+-- The above query returns the birth_date, emp_no, and first_name from employees where the first_name is like 'Geor%'.
 
 
 
@@ -99,6 +108,7 @@ WHERE hire_date =
     WHERE emp_no = 101010 
 	 )
 AND de.to_date > NOW();
+-- The above query returns all the current employees with the same hire date as employee 101010.
 
 -- Find all the titles ever held by all current employees with the first name Aamod.
 SELECT DISTINCT title
@@ -110,6 +120,7 @@ WHERE emp_no IN
 	WHERE first_name = 'Aamod'
 	)
 AND to_date > NOW();
+-- The above query returns all the titles ever held by all current employees with the first name Aamod.
 	
 -- How many people in the employees table are no longer working for the company? Give the answer in a comment in your code.
 -- 59900
