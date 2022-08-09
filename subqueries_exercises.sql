@@ -132,6 +132,7 @@ FROM
 	GROUP BY emp_no
 	) AS a
 WHERE cur_emp < NOW();
+-- The above query returns the number of people in the employees table who are no longer working for the company.
 
 -- Find all the current department managers that are female. List their names in a comment in your code.
 -- Isamu L., Karsten S., Leon D., Hilary K 
@@ -173,6 +174,7 @@ SELECT (MAX(salary) - STDDEV(salary))
 FROM salaries
 WHERE to_date > NOW()
 );
+-- The above query returns the number of current salaries that are within 1 standard deviation of the current highest salary.
 --.0346
 SELECT COUNT(*) /
 	(
@@ -188,6 +190,7 @@ AND salary >=
 	FROM salaries
 	WHERE to_date > NOW()
 	);
+-- The above query returns the percentage of all salaries that are within 1 standard deviation of the current highest salary.
 	
 -- Find all the department names that currently have female managers.
 SELECT DISTINCT d.dept_name
@@ -213,3 +216,4 @@ WHERE s.salary =
 	FROM salaries
 	WHERE to_date > NOW()
 	);
+-- The above query returns the first and last name of the employee with the highest salary.
