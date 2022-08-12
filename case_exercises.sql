@@ -12,6 +12,8 @@ SELECT e.emp_no Employee,
 FROM dept_emp de
 	JOIN employees e
 	USING (emp_no);
+-- The query above returns all employees, their department number, their start date, their end date, and a new column 'is_current_employee' that is a 1 if the employee is still with the company and 0 if not.
+
 -- Write a query that returns all employee names (previous and current), and a new column 'alpha_group' that returns 'A-H', 'I-Q', or 'R-Z' depending on the first letter of their last name.
 
 SELECT CONCAT(last_name,', ',SUBSTR(first_name,1,1)) Last_Name,
@@ -22,6 +24,7 @@ SELECT CONCAT(last_name,', ',SUBSTR(first_name,1,1)) Last_Name,
 	ELSE "N/A"
 	END AS Alpha_Group
 FROM employees;
+-- The query above returns all employee names (previous and current), and a new column 'alpha_group' that returns 'A-H', 'I-Q', or 'R-Z' depending on the first letter of their last name.
 
 -- How many employees (current or previous) were born in each decade?
 SELECT birth_date
@@ -30,6 +33,7 @@ SELECT MAX(birth_date)
 FROM employees;
 SELECT MIN(birth_date)
 FROM employees;
+-- The query above returns the maximum and minimum birth dates of all employees.
 
 
 SELECT COUNT(birth_date) AS Initial_Total,
@@ -39,6 +43,7 @@ SELECT COUNT(birth_date) AS Initial_Total,
 	COUNT(CASE WHEN SUBSTR(birth_date,3,1) = 5 THEN birth_date ELSE NULL END) +
 	COUNT(CASE WHEN SUBSTR(birth_date,3,1) = 6 THEN birth_date ELSE NULL END) AS Total_Born
 FROM employees;
+-- The query above returns the number of employees born in each decade.
 
 -- What is the current average salary for each of the following department groups: R&D, Sales & Marketing, Prod & QM, Finance & HR, Customer Service?
 
@@ -58,3 +63,4 @@ FROM salaries s
 		USING (dept_no)
 WHERE de.to_date > NOW() AND s.to_date > NOW()
 GROUP BY dept_group;
+-- The query above returns the current average salary for each of the following department groups: R&D, Sales & Marketing, Prod & QM, Finance & HR, Customer Service?
