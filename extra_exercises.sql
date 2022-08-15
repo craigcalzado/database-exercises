@@ -80,3 +80,9 @@ WHERE password IS NOT NULL;
 SELECT staff_id, first_name, last_name, address_id, email, store_id, active, username, last_update
 FROM staff
 WHERE password IS NULL;
+
+-- 4.IN operator
+
+-- a.Select the phone and district columns from the address table for addresses in California, England, Taipei, or West Java.
+-- b.Select the payment id, amount, and payment date columns from the payment table for payments made on 05/25/2005, 05/27/2005, and 05/29/2005. (Use the IN operator and the DATE function, instead of the AND operator as in previous exercises.)
+-- c.Select all columns from the film table for films rated G, PG-13 or NC-17.
