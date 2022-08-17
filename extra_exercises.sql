@@ -100,3 +100,8 @@ SELECT *
 FROM film
 WHERE rating
 IN ('G', 'PG-13', 'NC-17');
+
+-- 5. BETWEEN operator
+
+-- a. Select all columns from the payment table for payments made between midnight 05/25/2005 and 1 second before midnight 05/26/2005.
+-- b. Select the film_id, title, and descrition columns from the film table for films where the length of the description is between 100 and 120.
