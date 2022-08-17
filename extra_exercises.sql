@@ -104,4 +104,13 @@ IN ('G', 'PG-13', 'NC-17');
 -- 5. BETWEEN operator
 
 -- a. Select all columns from the payment table for payments made between midnight 05/25/2005 and 1 second before midnight 05/26/2005.
+SELECT *
+FROM payment
+WHERE payment_date
+BETWEEN '2005-05-25 00:00:00' AND '2005-05-26 23:59:59';
+
 -- b. Select the film_id, title, and descrition columns from the film table for films where the length of the description is between 100 and 120.
+SELECT film_id, title, description
+FROM film
+WHERE length(description)
+BETWEEN 100 AND 120;
