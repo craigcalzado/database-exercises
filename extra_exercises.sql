@@ -118,5 +118,22 @@ BETWEEN 100 AND 120;
 -- 6. LIKE operator
 
 -- a. Select the following columns from the film table for rows where the description begins with "A Thoughtful".
+SELECT film_id, title, description
+FROM film
+WHERE description
+LIKE 'A Thoughtful%';
+
 -- b. Select the following columns from the film table for rows where the description ends with the word "Boat".
--- c. Select the following columns from the film table where the description contains the word "Database" and the length of the film is greater than 3 hours.-- 
+SELECT film_id, title, description
+FROM film
+WHERE description
+LIKE '%Boat';
+
+-- c. Select the following columns from the film table where the description contains the word "Database" and the length of the film is greater than 3 hours.
+SELECT film_id, title, description
+FROM film
+WHERE description
+LIKE '%Database%'
+AND length > 180;
+
+
