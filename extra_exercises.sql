@@ -139,8 +139,27 @@ AND length > 180;
 -- 7. ORDER BY statement
 
 -- a.Select all columns from the film table and order rows by the length field in ascending order.
+SELECT *
+FROM film
+ORDER BY length;
+
 -- b. Select all distinct ratings from the film table ordered by rating in descending order.
+SELECT DISTINCT rating
+FROM film
+ORDER BY rating DESC;
+
 -- c. Select the payment date and amount columns from the payment table for the first 20 payments ordered by payment amount in descending order.
+SELECT payment_date, amount
+FROM payment
+ORDER BY amount DESC
+LIMIT 20;
+
 -- d. Select the title, description, special features, length, and rental duration columns from the film table for the first 10 films with behind the scenes footage under 2 hours in length and a rental duration between 5 and 7 days, ordered by length in descending order.
+SELECT title, description, special_features, length, rental_duration
+FROM film
+WHERE length < 120
+AND rental_duration BETWEEN 5 AND 7
+ORDER BY length DESC
+LIMIT 10;
 
 
