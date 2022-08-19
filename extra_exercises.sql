@@ -162,4 +162,25 @@ AND rental_duration BETWEEN 5 AND 7
 ORDER BY length DESC
 LIMIT 10;
 
+-- 8. JOINs
 
+-- a. Select customer first_name/last_name and actor first_name/last_name columns from performing a left join between the customer and actor column on the last_name column in each table. (i.e. customer.last_name = actor.last_name)
+-- Label customer first_name/last_name columns as customer_first_name/customer_last_name
+-- Label actor first_name/last_name columns in a similar fashion.
+-- returns correct number of records: 620
+SELECT customer.first_name, customer.last_name, actor.first_name, actor.last_name
+FROM customer
+LEFT JOIN actor
+ON customer.last_name = actor.last_name;
+
+Select the customer first_name/last_name and actor first_name/last_name columns from performing a /right join between the customer and actor column on the last_name column in each table. (i.e. customer.last_name = actor.last_name)
+returns correct number of records: 200
+Select the customer first_name/last_name and actor first_name/last_name columns from performing an inner join between the customer and actor column on the last_name column in each table. (i.e. customer.last_name = actor.last_name)
+returns correct number of records: 43
+Select the city name and country name columns from the city table, performing a left join with the country table to get the country name column.
+Returns correct records: 600
+Select the title, description, release year, and language name columns from the film table, performing a left join with the language table to get the "language" column.
+Label the language.name column as "language"
+Returns 1000 rows
+Select the first_name, last_name, address, address2, city name, district, and postal code columns from the staff table, performing 2 left joins with the address table then the city table to get the address and city related columns.
+returns correct number of rows: 2
