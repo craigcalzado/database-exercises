@@ -136,4 +136,11 @@ WHERE description
 LIKE '%Database%'
 AND length > 180;
 
+-- 7. ORDER BY statement
+
+-- a.Select all columns from the film table and order rows by the length field in ascending order.
+-- b. Select all distinct ratings from the film table ordered by rating in descending order.
+-- c. Select the payment date and amount columns from the payment table for the first 20 payments ordered by payment amount in descending order.
+-- d. Select the title, description, special features, length, and rental duration columns from the film table for the first 10 films with behind the scenes footage under 2 hours in length and a rental duration between 5 and 7 days, ordered by length in descending order.
+
 
