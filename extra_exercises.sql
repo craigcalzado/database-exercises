@@ -173,9 +173,14 @@ FROM customer
 LEFT JOIN actor
 ON customer.last_name = actor.last_name;
 
-Select the customer first_name/last_name and actor first_name/last_name columns from performing a /right join between the customer and actor column on the last_name column in each table. (i.e. customer.last_name = actor.last_name)
-returns correct number of records: 200
-Select the customer first_name/last_name and actor first_name/last_name columns from performing an inner join between the customer and actor column on the last_name column in each table. (i.e. customer.last_name = actor.last_name)
+-- b.Select the customer first_name/last_name and actor first_name/last_name columns from performing a /right join between the customer and actor column on the last_name column in each table. (i.e. customer.last_name = actor.last_name)
+-- returns correct number of records: 200
+SELECT customer.first_name, customer.last_name, actor.first_name, actor.last_name
+FROM customer
+RIGHT JOIN actor
+ON customer.last_name = actor.last_name;
+
+-- c. Select the customer first_name/last_name and actor first_name/last_name columns from performing an inner join between the customer and actor column on the last_name column in each table. (i.e. customer.last_name = actor.last_name)
 returns correct number of records: 43
 Select the city name and country name columns from the city table, performing a left join with the country table to get the country name column.
 Returns correct records: 600
